@@ -1,0 +1,52 @@
+@import "reset.css";
+
+#wrap {width: 100vw; min-height: 100vh; margin: 0 auto; background-color: #000;}
+
+
+/*헤더 스타일*/
+#header {width: 100vw; height: 80px; padding: 0 100px; position: fixed; top: 0; left: 0; overflow: hidden; box-sizing: border-box; z-index: 500; transition: .2s ease-in; }
+#header .nav {width: 1080px; height: 100%; margin: 0 auto; display: flex; flex-wrap: nowrap; justify-content: space-between; color: #fff;}
+#header .nav a {color: #fff;}
+#header .nav .logo,
+#header .nav .menu,
+#header .nav .lojo {flex-shrink: 0; text-align: center;}
+#header .nav .logo {height: 80px; display: flex; align-items: center;}
+#header .nav .logo a {display: block; width: 140px; height: 27px;}
+#header .nav .logo a span{ width: 100%; height: 100%; background: url(../images/logo.png) no-repeat 50% 0; display: block; text-indent: -9999px;}
+#header .nav .menu {height: 100%;}
+#header .nav .menu .tabs {height: 100%;}
+#header .nav .menu .tabs > ul {height: 100%; display: flex; flex-wrap: nowrap; justify-content: space-between; }
+#header .nav .menu .tabs > ul .tab_box {height: 100%; padding: 0 40px;}
+#header .nav .menu .tabs > ul .tab_box > a {font-size: 1.1rem; font-weight: 500; line-height: 80px; height: 80px;}
+#header .nav .lojo {height: 80px; display: flex; align-items: center; gap: 2px;}
+
+/*헤더 마우스 오버시 디자인 변경*/
+#header.on {height: auto; box-sizing: border-box; background-color: #fff;}
+#header.on .nav a,
+#header.on .nav .lojo div {color: #000;}
+#header.on .nav .logo a span{background-position: 50% -34px;}
+#header .nav .menu .tabs > ul .tab_box.on > a {color:#00c860; border-bottom: 2px solid #00be5a; display: block;}
+
+
+/*서브메뉴 디자인*/
+#header.on .nav_submenu {position: absolute; width: 100%; height: calc(100% - 80px); border-top: 1px solid #ccc; background-color: #fff; bottom: 1px; left: 0; z-index: -500; transition: .3s ease-in;}
+#header .nav .menu .tabs > ul .tab_box ul {width: 100%; padding: 20px 0; }
+#header .nav .menu .tabs > ul .tab_box ul li {color: #000; font-size: 1rem; line-height: 2rem; padding: 5px 0;}
+#header .nav .menu .tabs > ul .tab_box ul li:hover a {color: #00be5a;}
+
+
+
+/*슬라이더 스타일*/
+/*동영상 미로드시 표시되어야 할 백그라운드 이미지 추가 필요.*/
+.video_wrap {width: 100vw; height: 100vh; position: relative;}
+.video_wrap .main_video {width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 30; overflow: hidden;}
+.video_wrap .main_video iframe {width: 100%; height: 120%; position: absolute; border: 0; top: 43%; left: 50%; transform: translate(-50%, -50%); pointer-events: none}
+
+/*섹션이동시 배경이 흰색이면 헤더컬러변경*/
+#header.white {background-color: #fff;}
+#header.white .nav a,
+#header.white .nav .lojo div {color: #000;}
+#header.white .nav .logo a span{background-position: 50% -34px;}
+
+.section {color: #fff;}
+.section.test {background-color: #fff; color: #000;}
