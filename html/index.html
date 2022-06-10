@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/jquery.fullpage.css"/>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../js/jquery.fullpage.js"></script>
-    <script type="text/javascript" src="../js/common.js"></script>
+  
  
     <title>그린카 클론</title>
 </head>
@@ -106,16 +106,25 @@
                     <div class="main_video">
                         <div class="load_img"></div>
                         <div id="player"></div>
+                        <div id="btn-scroll">
+                            <div>
+                                <span class="down-arrow-1"></span>
+                                <span class="down-arrow-2"></span>
+                             </div>
+                          </div>
                     </div>
                 </div>
             </div>
-            <div class="section">서비스</div>
-            <div class="section test">이벤트 쿠폰</div>
-            <div class="section test">고객센터</div>
+            <div class="section">가까운 그린존</div>
+            <div class="section">경제적인 요금/쿠폰</div>
+            <div class="section">간편한 앱</div>
+            <div class="section">그린카 이용안내</div>
+            <div class="section test">이벤트</div>
+            <div class="section test">공지사항</div>
         </div>
         
     </div>
-
+    <script type="text/javascript" src="../js/common.js"></script>
     <script>
     //api호출
     var tag = document.createElement('script');
@@ -159,10 +168,13 @@
             setTimeout(hiddenImg, 1500);
 			event.target.playVideo();
 		}
-		if(state == 0) { //버퍼링
+		if(state <= 0) { //버퍼링
 			$('.load_img').removeClass('hidden');
 		}
 
+    }
+    function stopVideo() {
+        $('.load_img').removeClass('hidden');
     }
 
     function hiddenImg() {
