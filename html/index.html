@@ -9,6 +9,7 @@
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../js/jquery.fullpage.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
+ 
     <title>그린카 클론</title>
 </head>
 <body>
@@ -103,9 +104,10 @@
             <div class="section active">
                 <div class="video_wrap">
                     <div class="main_video">
-                        <iframe id="player" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="100%" height="100%" src="https://www.youtube.com/embed/S67ED_rAzuA?autoplay=1&amp;controls=0&amp;loop=1&amp;playlist=S67ED_rAzuA&amp;rel=0&amp;mute=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.greencar.co.kr&amp;widgetid=2" class="on"></iframe>
+                        <div class="load_img"></div>
+                        <div id="player"></div>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="section">서비스</div>
             <div class="section test">이벤트 쿠폰</div>
@@ -113,6 +115,62 @@
         </div>
         
     </div>
-   
+
+    <script>
+    //api호출
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        videoId: 'S67ED_rAzuA',
+        playerVars: {
+            'autoplay' : 1,
+            'controls' : 0,
+            'loop' : 1,
+            'playlist' : 'S67ED_rAzuA',
+            'rel' : 0,
+            'mute' : 1,
+            'modestbranding' : 1
+        },
+        events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+        }
+    });
+    }
+
+    function onPlayerReady(event) {
+        $(".load_img").removeClass("hidden");
+    }
+
+    
+    //API는 플레이어의 상태가 변경 될 때이 함수를 호출합니다.
+    var done = false;
+    function onPlayerStateChange(event) {
+        var state = event.target.getVideoLoadedFraction();
+		
+		if(state > 0) {
+            setTimeout(hiddenImg, 1500);
+			event.target.playVideo();
+		}
+		if(state == 0) { //버퍼링
+			$('.load_img').removeClass('hidden');
+		}
+
+    }
+
+    function hiddenImg() {
+        $(".load_img").addClass("hidden");
+    }
+
+
+    </script>
+
 </body>
 </html>

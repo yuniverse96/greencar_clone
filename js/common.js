@@ -1,11 +1,14 @@
 $(document).ready(function() {
 
+
+	
 	$('#fullpage').fullpage({
 		//options here
 		autoScrolling:true,
 		scrollHorizontally: true,
 		'afterLoad': function () {
-			if (this.hasClass("test")){
+			
+			if ($(this).hasClass("test")){
 				$("#header").addClass("white");
 			}else{
 				$("#header").removeClass("white");
@@ -25,9 +28,7 @@ $(document).ready(function() {
 		$("#header .nav .menu .tabs > ul .tab_box").removeClass("on");
 	});
 
+
 	
-
-
-		
 
 });
